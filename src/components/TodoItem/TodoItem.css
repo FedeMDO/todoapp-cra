@@ -1,0 +1,9 @@
+.todo-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.completed {
+  text-decoration: line-through;
+}

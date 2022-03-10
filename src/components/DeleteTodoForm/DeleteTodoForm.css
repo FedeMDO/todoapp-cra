@@ -1,0 +1,5 @@
+.todoitem-delete-button {
+  background-color: firebrick;
+  color: white;
+  border-radius: 40%;
+}

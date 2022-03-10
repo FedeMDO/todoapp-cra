@@ -3,12 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloProvider } from '@apollo/client';
+import client from './services/apollo-client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Todos from './routes/Todos';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="workspace/:workspaceId" element={<Todos />} />
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: '1rem' }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ApolloProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
